@@ -20,6 +20,8 @@
        ,l)))
 
 (defmacro combine ((&rest funList) &rest argList)
+  "usage: (combine (exp1 exp2 exp3) '(1 2 3))
+=> (exp1 (exp2 (exp3 '(1 2 3))))"
   `(,@(loop with funL = (copy-list (reverse funList))
          with exp = (cons (car funL) argList)
          for f in (cdr funL)
