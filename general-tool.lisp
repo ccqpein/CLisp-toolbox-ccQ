@@ -1,4 +1,9 @@
-(load "./package.lisp")
+(defpackage #:general-tool
+  (:use #:CL)
+  (:nicknames #:GT)
+  (:export #:with-gensyms
+           #:aappend))
+
 (in-package #:general-tool)
 
 (defmacro with-gensyms ((&rest names) &body body)
@@ -12,3 +17,10 @@
        (loop for i in ,elel do
             (setf ,l (append ,l (list i))))
        ,l)))
+
+(defmacro combine ((&rest funList) &rest argList)
+  `(,@(loop with funL = (copy-list (reverse funList))
+         with exp = (cons (car funL) argList)
+         for f in (cdr funL)
+         do (setf exp (list f exp))
+         finally (return exp))))

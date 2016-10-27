@@ -1,5 +1,13 @@
-(load "./package.lisp")
 (load "./general-tool.lisp")
+
+(defpackage #:math-tool
+  (:use #:CL #:GT)
+  (:nicknames #:MT)
+  (:export #:standard-deviation
+           #:gen-random-num
+           #:sigma
+           ))
+
 (in-package #:math-tool)
 
 (defun standard-deviation (numlist)

@@ -1,5 +1,18 @@
-(load "./package.lisp")
 (load "./general-tool.lisp")
+
+(defpackage #:matrix-tool
+  (:use #:CL #:GT)
+  (:nicknames #:MXT)
+  (:export #:*list-to-array
+           #:*array-to-list
+           #:array-slice
+           #:array-slice-col
+           #:array-multiply
+           #:matrix-norm-2
+           #:point-distance
+           #:points-average
+           ))
+
 (in-package #:matrix-tool)
 
 (defmacro *list-to-array (l)
