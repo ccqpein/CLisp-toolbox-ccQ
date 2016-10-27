@@ -2,7 +2,8 @@
   (:use #:CL)
   (:nicknames #:GT)
   (:export #:with-gensyms
-           #:aappend))
+           #:aappend
+           #:combine))
 
 (in-package #:general-tool)
 
