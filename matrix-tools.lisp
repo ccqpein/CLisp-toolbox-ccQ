@@ -1,5 +1,3 @@
-(load "./general-tool.lisp")
-
 (defpackage #:matrix-tool
   (:use #:CL #:GT)
   (:nicknames #:MXT)

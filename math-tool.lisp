@@ -1,5 +1,3 @@
-(load "./general-tool.lisp")
-
 (defpackage #:math-tool
   (:use #:CL #:GT)
   (:nicknames #:MT)
