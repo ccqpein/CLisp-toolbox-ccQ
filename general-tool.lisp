@@ -3,7 +3,8 @@
   (:nicknames #:GT)
   (:export #:with-gensyms
            #:aappend
-           #:combine))
+           #:combine
+           #:range))
 
 (in-package #:general-tool)
 
@@ -27,3 +28,7 @@
          for f in (cdr funL)
          do (setf exp (list f exp))
          finally (return exp))))
+
+(defun range (n)
+  (loop for i from 0 to (1- n)
+       collect i))
