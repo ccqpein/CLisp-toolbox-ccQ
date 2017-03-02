@@ -4,7 +4,9 @@
   (:export #:with-gensyms
            #:aappend
            #:combine
-           #:range))
+           #:range
+           #:->
+           #:->>))
 
 (in-package #:general-tool)
 
@@ -31,4 +33,22 @@
 
 (defun range (n)
   (loop for i from 0 to (1- n)
-       collect i))
+     collect i))
+
+(defmacro ->> (x &rest forms)
+  "Same usage as Clojure ->>, (->> x form1 form2 ...)
+=> (... (form2 (form1 x)))"
+  `(,@(loop with funL = (copy-list forms)
+         with exp = x
+         for f in funL
+         do (setf exp (append f (list exp)))
+         finally (return exp))))
+
+(defmacro -> (x &rest forms)
+  "Same usage as Clojure ->, (-> x form1 form2 ...)
+=> (... (form2 (form1 x args) args) args)"
+  `(,@(loop with funL = (copy-list forms)
+         with exp = x
+         for f in funL
+         do (setf exp (append (list (car f) exp) (cdr f)))
+         finally (return exp))))
