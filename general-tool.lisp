@@ -33,20 +33,18 @@
   (loop for i from 0 to (1- n)
      collect i))
 
+;;; thanks for lispm https://www.reddit.com/r/Common_Lisp/comments/5x4jbs/code_and_macro_from_clojure_to_common_lisp/
 (defmacro ->> (x &rest forms)
   "Same usage as Clojure ->>, (->> x form1 form2 ...)
 => (... (form2 (form1 x)))"
-  (loop with funL = (copy-list forms)
-     with exp = x
-     for f in funL
-     do (setf exp (append f (list exp)))
-     finally (return exp)))
+  (reduce (lambda (a b)
+            (append b (list a)))
+          forms
+          :initial-value x))
 
-(defmacro -> (x &rest forms)
+(defmacro -> (x &rest forms &aux (rform x))
   "Same usage as Clojure ->, (-> x form1 form2 ...)
 => (... (form2 (form1 x args) args) args)"
-  (loop with funL = (copy-list forms)
-     with exp = x
-     for f in funL
-     do (setf exp (append (list (car f) exp) (cdr f)))
-     finally (return exp)))
+  (dolist (form forms rform)
+    (setf rform (append (list (car form))
+                        (list rform (cadr form))))))
