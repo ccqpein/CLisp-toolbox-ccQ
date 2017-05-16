@@ -38,9 +38,9 @@
 (defun update-hash (key hash-table fun &rest args)
   "update hash value conveniently"
   (setf (gethash key hash-table)
-        (if (gethash key hash-table)
-            (apply fun (gethash key hash-table) args)
-            (apply fun  args))))
+        (apply fun (gethash key hash-table) args)
+        ))
+
 
 ;;; thanks for lispm https://www.reddit.com/r/Common_Lisp/comments/5x4jbs/code_and_macro_from_clojure_to_common_lisp/
 (defmacro ->> (x &rest forms)
