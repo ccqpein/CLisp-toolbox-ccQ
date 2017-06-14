@@ -18,13 +18,15 @@ Using ASDF system definition.
 
 ## Catalog
 
-+ general-tool
++ general-tool
     - with-gensyms
     - aappend
     - combine
     - range
     - ->>
     - ->
+    - update-hash
+    - pprint-hash-table
 + math-tool
     - standard-deviation
     - gen-random-num

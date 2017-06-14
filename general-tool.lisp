@@ -8,6 +8,7 @@
            #:->
            #:->>
            #:update-hash
+           #:pprint-hash-table
            ))
 
 (in-package #:general-tool)
