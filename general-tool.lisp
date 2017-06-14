@@ -41,6 +41,10 @@
         (apply fun (gethash key hash-table) args)
         ))
 
+(defun pprint-hash-table (ht)
+  (loop for key being the hash-keys of ht
+     using (hash-value value)
+     do (format t "~S => ~S~%" key value)))
 
 ;;; thanks for lispm https://www.reddit.com/r/Common_Lisp/comments/5x4jbs/code_and_macro_from_clojure_to_common_lisp/
 (defmacro ->> (x &rest forms)
