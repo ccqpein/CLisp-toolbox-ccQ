@@ -18,11 +18,8 @@
      ,@body))
 
 (defmacro aappend (l &rest eles)
-    "l must be symbol not expression. For example, (aappend a 2 3 4) is fine, (aappend '(1 2) 2 3) and (aappend (list 2 3) 2 2) will issue error"
-  (with-gensyms (elel)
-    `(let ((,elel ',eles))
-       (append ,l ,elel)
-       )))
+  `(append ,l ',eles)
+  )
 
 (defmacro combine ((&rest funList) &rest argList)
   "usage: (combine (exp1 exp2 exp3) '(1 2 3))
