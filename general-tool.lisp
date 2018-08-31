@@ -17,11 +17,12 @@
   `(let ,(loop for n in names collect `(,n (gensym)))
      ,@body))
 
-(defun aappend (l &rest eles)
-  (loop with rel = l
-     for i in eles
-     do (setf rel (append rel (list i)))
-     finally (return rel)))
+(defmacro aappend (l &rest eles)
+    "l must be symbol not expression. For example, (aappend a 2 3 4) is fine, (aappend '(1 2) 2 3) and (aappend (list 2 3) 2 2) will issue error"
+  (with-gensyms (elel)
+    `(let ((,elel ',eles))
+       (append ,l ,elel)
+       )))
 
 (defmacro combine ((&rest funList) &rest argList)
   "usage: (combine (exp1 exp2 exp3) '(1 2 3))

@@ -9,7 +9,7 @@
 
 (defsystem ccQ-toolbox
     :name "ccQ-toolbox"
-    :version "0.1.1"
+    :version "0.1.2"
     :maintainer "ccQpein"
     :author "ccQpein"
     :components ((:file "general-tool")
