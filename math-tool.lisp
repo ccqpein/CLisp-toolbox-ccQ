@@ -1,3 +1,4 @@
+;;;; math-tool packages including all math tools
 (defpackage #:math-tool
   (:use #:CL #:GT)
   (:nicknames #:MT)
