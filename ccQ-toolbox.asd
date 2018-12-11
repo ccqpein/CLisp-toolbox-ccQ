@@ -16,7 +16,4 @@
                  (:file "math-tool"
                         :depends-on ("general-tool"))
                  (:file "matrix-tools"
-                        :depends-on ("general-tool")))
-    )
-
-
+                        :depends-on ("general-tool"))))
